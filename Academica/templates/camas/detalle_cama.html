@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Detalle de la Cama
+{% endblock %}
+
+{% block content %}
+
+<div class="container mt-4">
+
+    <h1 class="mb-4">Detalle de la Cama</h1>
+
+    <div class="card">
+        <div class="card-body">
+
+            <h5 class="card-title">Cama {{ cama.codigo_cam }}</h5>
+
+            <p><strong>Código:</strong> {{ cama.codigo_cam }}</p>
+            <p><strong>Detalle:</strong> {{ cama.detalle_cam }}</p>
+            <p><strong>Fecha:</strong> {{ cama.fecha }}</p>
+            <p><strong>Planta asociada:</strong>
+                <a href="{% url 'detallePlanta' cama.numero_planta.numero_pln %}">{{ cama.numero_planta.nombre_pln }}</a>
+            </p>
+            <p><strong>Paciente asociado:</strong>
+                <a href="{% url 'detallePaciente' cama.cedula_paciente.cedula_pac %}">{{ cama.cedula_paciente.nombre_pac }} {{ cama.cedula_paciente.apellidos_pac }}</a>
+            </p>
+
+            <a href="{% url 'listado_camas' %}" class="theme-primary btn-solid btn-styled">
+                Volver al listado
+            </a>
+
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}
